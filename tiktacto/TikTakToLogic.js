@@ -5,7 +5,19 @@ for(var i=0; i<9; i++){
 	board.push('');
 }
 
+var winConditions = [
+	[0,1,2],
+	[3,4,5],
+	[6,7,8],
+	[0,3,6],
+	[1,4,7],
+	[2,5,8],
+	[0,4,8],
+	[2,4,6]
+];
+
 var winner = '';
+var winningSpaces;
 var turn = 0;
 var currentPlayer = 'X'
 
@@ -30,34 +42,22 @@ function doTurn(spaceIndex){
 	}
 }
 
-function setWinner(){
-	if (xTurn){
-		if(hasWon('X')){
-			winner = 'X';
-		}
-	}
-	else{
-		if(hasWon('O')){
-			winner = 'O';
+// Check the winner and 
+function setWinner() {
+	for(var i = 0; i < winConditions.length; i++) {
+		let spaceA = board[winConditions[i][0]];
+		let spaceB = board[winConditions[i][1]];
+		let spaceC = board[winConditions[i][2]];
+		if(spaceA === spaceB && spaceB === spaceC && spaceA !=== '') {
+			winner = spaceA;
+			winningSpaces = winConditions[i];
 		}
 	}
 }
 
+
 function hasWon(player){
-	if (winner === ''){
-		for (var i=0; i<3; i++){
-			if(winXCheck(i)){
-				return true;
-			}
-			else if(winYCheck(i)){
-				return true;
-			}
-		}
-		if(winSlashCheck()){
-			return true;
-		}
-	}	
-	return false
+	return winner != '';
 }
 
 function winXCheck(row){

@@ -63,14 +63,6 @@ function drawO(x, y){
 	circle(x+(spaceSize/2),y+(spaceSize/2), spaceSize)
 }
 
-function drawXWin(){
-//draw a line on the board in the case of an X win?
-}
-
-function drawXYin(){
-//draw a line on the board in the case of an Y win?
-}
-
-function drawSlashWin(){
-//draw a line on the board in the case of an slash win?
+function drawWin() {
+	// TODO
 }

@@ -51,11 +51,10 @@ function setWinner() {
 		if(spaceA === spaceB && spaceB === spaceC && spaceA !== '') {
 			winner = spaceA;
 			winningSpaces = winConditions[i];
-			drawWin(winningSpaces)
+			drawWin(winningSpaces);
 		}
 	}
 }
-
 
 function hasWon(player){
 	return winner != '';

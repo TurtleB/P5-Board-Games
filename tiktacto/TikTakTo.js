@@ -1,5 +1,6 @@
 var lineColor;
 var spaceSize = 150;
+var won = false
 
 //
 function setup() {
@@ -26,6 +27,10 @@ function drawBoard() {
 		else if (board[i] === 'O'){
 			drawO(x,y)
 		}
+	}
+	if(won){
+			stroke('red')
+			line(startX, startY, endX, endY)
 	}
 }
 
@@ -63,14 +68,12 @@ function drawO(x, y){
 	circle(x+(spaceSize/2),y+(spaceSize/2), spaceSize)
 }
 
-function drawXWin(){
-//draw a line on the board in the case of an X win?
-}
-
-function drawXYin(){
-//draw a line on the board in the case of an Y win?
-}
-
-function drawSlashWin(){
-//draw a line on the board in the case of an slash win?
+function drawWin(winningSpaces) {
+	startIndex = winningSpaces[0]
+	endIndex = winningSpaces[2]
+	startX = ((startIndex%3)*spaceSize) + spaceSize*0.5;
+	startY = (Math.floor(startIndex/3))*spaceSize + spaceSize*0.5;
+	endX = ((endIndex%3)*spaceSize) + spaceSize*0.5;
+	endY = (Math.floor(endIndex/3))*spaceSize + spaceSize*0.5;
+	won = true
 }
